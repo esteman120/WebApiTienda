@@ -3,7 +3,6 @@ const models = require("../models");
 const Product = models.product;
 
 exports.findAll = (req, res) => {
-    let id = req.
     console.log("Entro producto controller");
     Product.findAll({
         include: [{
