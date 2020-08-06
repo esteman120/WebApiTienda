@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 
 const express = require('express'),
     app = express(),
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //BD
-const db = require('./api/models');
+const db = require('./server/models');
 db.sequelize.sync();
 
 // simple route
@@ -23,14 +23,11 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome" });
 });
 
-
-app.use( require('./routes/productRoutes.js') );
+require('./server/routes/productRoutes.js')(app);
 // require('./api/routes/productRoutes.js')(app);
 // require('./api/routes/categoryRoutes.js')(app);
 // require('./api/routes/clientRoutes.js')(app);
 
 
-app.listen(port, () =>{
-    console.log('API Server started on: ' + port);
-});
+app.listen(port);
 
