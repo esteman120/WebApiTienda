@@ -23,9 +23,11 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome" });
 });
 
-require('./api/routes/productRoutes.js')(app);
-require('./api/routes/categoryRoutes.js')(app);
-require('./api/routes/clientRoutes.js')(app);
+
+app.use( require('./routes/productRoutes.js') );
+// require('./api/routes/productRoutes.js')(app);
+// require('./api/routes/categoryRoutes.js')(app);
+// require('./api/routes/clientRoutes.js')(app);
 
 
 app.listen(port, () =>{
