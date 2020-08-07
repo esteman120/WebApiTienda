@@ -83,7 +83,7 @@ async function createClient(ObjClient) {
 }
 
 exports.GetClient = (req, res) => {
-  let email = req.body.email;
+  let email = req.query.email;
   if (!email) {
     res.status(400).send({
       ok: false,
