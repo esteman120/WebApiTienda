@@ -12,6 +12,12 @@ exports.findAll = (req, res) => {
   Product.findAndCountAll({
     limit: limite,
     offset: desde,
+    include: [
+      {
+        model: models.category,
+        attributes: ["id", "nameCategory"],       
+      },
+    ],
   })
     .then((data) => {
       if (data === null || data === undefined) {
@@ -40,13 +46,20 @@ exports.findAll = (req, res) => {
 
 exports.FindProductsXCategory = (req, res) => {
   let idCategory = req.params.id;
+
+  let desde = req.query.desde || 0;
+  desde = Number(desde);
+
+  let limite = req.query.limite || 5;
+  limite = Number(limite);
+
   Product.findAndCountAll({
     limit: limite,
-    offset: desde,
+    offset: desde,    
     include: [
       {
         model: models.category,
-        attributes: [],
+        attributes: ["id", "nameCategory"],
         where: {
           id: idCategory,
         },
