@@ -1,10 +1,8 @@
-// module.exports = function(app) {
-//     var client = require('../controllers/clientController');
-//     var router = require('express').Router();
-//     router.get('/', client.);
-//     router.post('/crear', verificaToken, clientes.CrearClientes);
-//     router.post('/actualizar', verificaToken, clientes.ActualizarClientes);
-//     router.post('/eliminar', verificaToken, clientes.EliminarClientes);
+module.exports = function(app) {
+    var client = require('../controllers/clientController.js');
+    var router = require('express').Router();
+    router.post('/create', client.CreateClient);
+    router.get('/', client.GetClient);    
 
-//     app.use('/api/clientes', router);
-// };
+    app.use('/api/client', router);
+};

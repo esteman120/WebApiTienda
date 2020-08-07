@@ -24,9 +24,8 @@ app.get("/", (req, res) => {
 });
 
 require('./server/routes/productRoutes.js')(app);
-// require('./api/routes/productRoutes.js')(app);
-// require('./api/routes/categoryRoutes.js')(app);
-// require('./api/routes/clientRoutes.js')(app);
+require('./server/routes/clientRoutes.js')(app);
+require('./server/routes/categoryRoutes.js')(app);
 
 
 app.listen(port);
