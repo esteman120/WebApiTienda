@@ -1,5 +1,5 @@
 ## Código fuente del proyecto
 
 ```
-npm install
+Para instalar los paquetes correr el siguiente comando npm install y para correrlo node server.js
 ```
